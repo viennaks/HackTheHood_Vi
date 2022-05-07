@@ -32,19 +32,27 @@ def select(function_code):
     if function_code == "c":
         item = user_input("Input item: ")
         create(item)
+        running= True
+        return running
 
     elif function_code == "r":
         index = user_input("Input index: ")
         read(index)
+        running = True
+        return running
 
     elif function_code == "u":
         index = user_input("Input index: ")
         item = user_input("Input item: ")
         update(index, item)
+        running = True
+        return running
 
     elif function_code == "d":
         index = user_input("Input index: ")
         destroy(index)
+        running = True
+        return running
 
     elif function_code == "m":
         index = user_input("Input index: ")
