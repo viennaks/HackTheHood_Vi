@@ -1,6 +1,6 @@
 from tabnanny import check
 
-checklist = [ 1, 2, 1, 1, 1, 1,1 ,1 ]
+checklist = []
 
 # Define Functions
 def create(item):
@@ -56,8 +56,7 @@ def select(function_code):
 running = True
 
 while running:
-    selection = user_input(
-        "Press any key to start")
+    selection = user_input( "Press any key to start")
     running = select(selection)
  
  
