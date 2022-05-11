@@ -2,69 +2,108 @@ from tabnanny import check
 
 checklist = []
 
-# Define Functions
 def create(item):
+ 
     checklist.append(item)
 
+    return print( f"{item} was added to the checklist: {checklist}" )
+
 def read(index):
-    print(checklist[index])
+ 
+    return print(f"{checklist[index]} is at the {index} position")
 
 def update(index, item):
-    checklist[index]= item
+
+    old_item = checklist[index]
+    checklist[index] = f'[ ] {item}'
+
+    return print(f"{old_item} was changed to {item}")
 
 def destroy(index):
+   
+    old_item = checklist[index]
     checklist.pop(index)
 
+    return print(f"{old_item} was deleted from checklist")
+
 def mark_completed(index):
-    checklist[index] += "*"
+ 
+
+    if "*" not in checklist[index]:
+        checklist[index] = f'[*] {checklist[index]}'
+
+    return print(f"{checklist[index]} was marked completed")
 
 def list_all_items():
-    print(checklist)
+    # List all items code here
+    for item in checklist:
+        if "*" not in item:
+            print(item)
 
-def user_input(prompt):
-    x = input(prompt)
-    return x
-    
-def select(function_code):  
+    return print(f'{checklist} only non-starred items returned')
 
-    function_code = user_input("What functions do you want to run? Create (c), Read (r), Update (u), Destroy (d), Mark Complete (m), and List all Items (l)\n Input a letter: ")
+def select(function_code):
+    # User Selection Code here
 
-    if function_code == "c":
-        item = user_input("Input item: ")
-        create(item)
-        running= True
-        return running
-
-    elif function_code == "r":
-        index = user_input("Input index: ")
-        read(index)
+    # Create item example
+    if function_code == "C":
+        input_item = input("Enter an element to add to the list: ")
+        create(input_item)
         running = True
+
         return running
 
-    elif function_code == "u":
-        index = user_input("Input index: ")
-        item = user_input("Input item: ")
-        update(index, item)
+    elif function_code == "R":
+        input_item = input("Enter the index position you are trying to access in the list: ")
+        read(int(input_item))
         running = True
+
         return running
 
-    elif function_code == "d":
-        index = user_input("Input index: ")
-        destroy(index)
+    elif function_code == "U":
+        input_index = input("Enter the index position you are trying to update in the list: ")
+        input_item = input("Enter the element you are trying to update to the list: ")
+        update(int(input_index), input_item)
         running = True
+        
         return running
 
-    elif function_code == "m":
-        index = user_input("Input index: ")
-        mark_completed(index)
+    elif function_code == "D":
+        input_index = input("Enter the index position of the element you want to delete: ")
+        destroy(int(input_index))
+        running = True
 
-    elif function_code == "l":
+        return running
+
+    elif function_code == "M":
+        input_index = input("Enter the index position of the element you want to mark completed: ")
+        mark_completed(int(input_index))
+        running = True
+
+        return running
+
+    elif function_code == "L":
         list_all_items()
+        running = True
+
+        return running
+
+    else:
+        print("Please enter a valid checklist command!")
+        
+        running = True
+
+        return running
 
 running = True
 
 while running:
-    selection = user_input( "Press any key to start")
+    selection = input(
+        "Press C to add to list, R to Read from list, U to update an existing entry, D to delete an element in the list list, M to mark an item completed, L to list out items and Q to quit: ").upper()
     running = select(selection)
+
+running = True
+
+
  
  
