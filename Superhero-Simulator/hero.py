@@ -20,18 +20,18 @@ class Hero:
   def battle(self, opponent):
     ''' Current Hero will take turns fighting the opponent hero passed in.
     '''
-    heroes =[]
-    heroes.append(self.name)
-    heroes.append(opponent.name)
+    heroes_name = []
+    heroes_name.append(self.name)
+    heroes_name.append(opponent.name)
 
-    winner = random.choice(heroes)
-    for hero in heroes:
-      if not hero != winner:
+    winner = random.choice(heroes_name)
+    for hero in heroes_name:
+      if hero != winner:
         loser = hero
 
     print(f'{winner} has defected {loser}')
     
-    return winner 
+    return winner
   
  
 hero1 = Hero("Nitro Storm")
